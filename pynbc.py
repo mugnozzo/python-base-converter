@@ -14,6 +14,14 @@ import sys
 aSou=['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 aDes=['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 
+for ch in aSou:
+    if aSou.count(ch)!=1:
+        raise Exception("The source alphabet contains duplicate characters.")
+
+for ch in aDes:
+    if aSou.count(ch)!=1:
+        raise Exception("The destination alphabet contains duplicate characters.")
+
 argParser=argparse.ArgumentParser()
 argParser.add_argument("-n","--number",help="number to convert",required=True)
 argParser.add_argument("-s","--source-base",help="source base",required=True)
@@ -27,8 +35,12 @@ print("args=%s" % args)
 # TODO allow to pass file as input
 
 n=args.number
-s=int(args.source_base)         # TODO check if number fits source base
-d=int(args.destination_base)    # TODO check if destination fit maxbase
+s=int(args.source_base)
+d=int(args.destination_base)
+
+for ch in n:
+    if aSou.count(ch)!=1:
+        raise Exception("The source contains characters that are not in the source alphabet.")
 
 n10=0
 i=0

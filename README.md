@@ -23,5 +23,4 @@ Navigate into the directory and exec the python script passing the arguments to 
 ```
 
 ## Missing features
-- Accepting a file (or stdin) as input;
-- check if inputs are well formatted (number respects given base and alphabet, etc...).
+- Accepting a file (or stdin) as input.
