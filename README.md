@@ -23,4 +23,4 @@ Navigate into the directory and exec the python script passing the arguments to 
 ```
 
 ## Missing features
-- Accepting a file (or stdin) as input.
+- Accepting a file (or stdin) as input (planned as next update).
