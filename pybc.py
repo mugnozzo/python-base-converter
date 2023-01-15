@@ -9,10 +9,25 @@
 # Hosted at:    https://github.com/mugnozzo/python-number-base-converter
 
 import argparse
-import sys
+from configparser import ConfigParser # to parse config.ini
+import os.path # to check config file and input file
 
-aSou=['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-aDes=['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+path=os.path.dirname(os.path.realpath(__file__))
+confPath=path+"/config.ini"
+
+# Looking for config.ini
+config=None
+if os.path.exists(confPath):
+    config=ConfigParser()
+    config.read(confPath)
+else:
+    raise Exception("File config.ini not found in directory "+path+". Did you copy/move config.def.ini to config.ini?")
+
+alphabets=config["Alphabets"]
+
+aSou=alphabets['source_alphabet']
+aDes=alphabets['destination_alphabet']
+# TODO manage spaces in alphabets
 
 for ch in aSou:
     if aSou.count(ch)!=1:
@@ -28,9 +43,6 @@ argParser.add_argument("-s","--source-base",help="source base",required=True)
 argParser.add_argument("-d","--destination-base",help="destination base",required=True)
 
 args = argParser.parse_args()
-
-
-print("args=%s" % args)
 
 # TODO allow to pass file as input
 
