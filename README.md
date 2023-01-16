@@ -19,6 +19,7 @@ It takes a number `-n` in a given base `-s` and converts it into base `\d`.
 ### Alphabets
 You can manage the alphabets to use in each base (the source and destination number bases) in the config.ini file.
 The default bases are numbers from 0 to 9 followed by letters from A to Z (pay attention when giving the `-n` parameter: in the default alphabet the letters must be uppercase).
+If analphabet is set to `ASCII` then it is set to the list of ASCII characters from 32 (space) to 126 (~).
 
 ## Missing features
 - Improving this README with more instructions.

@@ -29,14 +29,6 @@ aSou=alphabets['source_alphabet']
 aDes=alphabets['destination_alphabet']
 # TODO manage spaces in alphabets
 
-for ch in aSou:
-    if aSou.count(ch)!=1:
-        raise Exception("The source alphabet contains duplicate characters.")
-
-for ch in aDes:
-    if aSou.count(ch)!=1:
-        raise Exception("The destination alphabet contains duplicate characters.")
-
 argParser=argparse.ArgumentParser()
 argParser.add_argument("-n","--number",help="number to convert",required=True)
 argParser.add_argument("-s","--source-base",help="source base",required=True)
@@ -44,11 +36,30 @@ argParser.add_argument("-d","--destination-base",help="destination base",require
 
 args = argParser.parse_args()
 
-# TODO allow to pass file as input
-
 n=args.number
 s=int(args.source_base)
 d=int(args.destination_base)
+
+if aSou=="ASCII":
+    aSou=""
+    print('asou')
+    for i in range(32,127):
+        aSou+=chr(i)
+if aDes=="ASCII":
+    aDes=""
+    print('ades')
+    for i in range(32,127):
+        aDes+=chr(i)
+print(aDes)
+
+# TODO allow to pass file as input
+for ch in aSou:
+    if aSou.count(ch)!=1:
+        raise Exception("The source alphabet contains duplicate characters.")
+
+for ch in aDes:
+    if aDes.count(ch)!=1:
+        raise Exception("The destination alphabet contains duplicate characters.")
 
 for ch in n:
     if aSou.count(ch)!=1:
