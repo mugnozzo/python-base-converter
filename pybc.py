@@ -53,6 +53,9 @@ if aDes=="ASCII":
 print(aDes)
 
 # TODO allow to pass file as input
+if len(aSou)<s:
+    raise Exception("The source alphabet has "+str(len(aSou))+" elements, that is less than "+str(s)+" (the source base).")
+
 for ch in aSou:
     if aSou.count(ch)!=1:
         raise Exception("The source alphabet contains duplicate characters.")
@@ -62,8 +65,10 @@ for ch in aDes:
         raise Exception("The destination alphabet contains duplicate characters.")
 
 for ch in n:
-    if aSou.count(ch)!=1:
-        raise Exception("The source contains characters that are not in the source alphabet.")
+    if aSou[0:s].count(ch)!=1:
+        if aSou.count(ch)!=1:
+            raise Exception("Character "+ch+" is not in source alphabet.")
+        raise Exception("Character "+ch+" is out of range.\nSource alphabet trimmed to base "+str(s)+" is "+str(aSou[0:s]))
 
 n10=0
 i=0
