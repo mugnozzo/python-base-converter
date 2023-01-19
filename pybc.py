@@ -27,7 +27,6 @@ alphabets=config["Alphabets"]
 
 aSou=alphabets['source_alphabet']
 aDes=alphabets['destination_alphabet']
-# TODO manage spaces in alphabets
 
 argParser=argparse.ArgumentParser()
 argParser.add_argument("-n","--number",help="number to convert",required=True)
@@ -42,17 +41,13 @@ d=int(args.destination_base)
 
 if aSou=="ASCII":
     aSou=""
-    print('asou')
     for i in range(32,127):
         aSou+=chr(i)
 if aDes=="ASCII":
     aDes=""
-    print('ades')
     for i in range(32,127):
         aDes+=chr(i)
-print(aDes)
 
-# TODO allow to pass file as input
 if len(aSou)<s:
     raise Exception("The source alphabet has "+str(len(aSou))+" elements, that is less than "+str(s)+" (the source base).")
 
@@ -72,13 +67,10 @@ for ch in n:
 
 n10=0
 i=0
-print(len(n))
 for c in n:
     ind=aSou.index(c)
     n10+=aSou.index(c)*(s**(len(n)-1-i))
     i+=1
-
-print(n10)
 
 nd=""
 while(n10!=0):
@@ -88,4 +80,3 @@ while(n10!=0):
 print("Base "+str(s)+": "+str(n))
 print("Base "+str(d)+": "+nd[::-1])
 
-# TODO if the destination base is not given, calculate some default bases (2 8 10 16)
