@@ -11,3 +11,6 @@
 
 ## Readme
 - Improve with more details and some examples.
+
+## Remember
+- Check version after you change/add/remove something.
