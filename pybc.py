@@ -23,11 +23,12 @@ if os.path.exists(confPath):
 else:
     raise Exception("File config.ini not found in directory "+path+". Did you copy/move config.def.ini to config.ini?")
 
+# Reading alphabets from config.ini
 alphabets=config["Alphabets"]
-
 aSou=alphabets['source_alphabet']
 aDes=alphabets['destination_alphabet']
 
+# Parsing arguments
 argParser=argparse.ArgumentParser()
 argParser.add_argument("-n","--number",help="number to convert",required=True)
 argParser.add_argument("-s","--source-base",help="source base",required=True)
@@ -39,6 +40,8 @@ n=args.number
 s=int(args.source_base)
 d=int(args.destination_base)
 
+# Checking if source and/or destination alphabet
+# are set to "ASCII"
 if aSou=="ASCII":
     aSou=""
     for i in range(32,127):
@@ -48,6 +51,7 @@ if aDes=="ASCII":
     for i in range(32,127):
         aDes+=chr(i)
 
+# Checking consistency between alphabets/bases/source
 if len(aSou)<s:
     raise Exception("The source alphabet has "+str(len(aSou))+" elements, that is less than "+str(s)+" (the source base).")
 
@@ -65,6 +69,7 @@ for ch in n:
             raise Exception("Character "+ch+" is not in source alphabet.")
         raise Exception("Character "+ch+" is out of range.\nSource alphabet trimmed to base "+str(s)+" is "+str(aSou[0:s]))
 
+# Converting from source base to base 10
 n10=0
 i=0
 for c in n:
@@ -72,11 +77,13 @@ for c in n:
     n10+=aSou.index(c)*(s**(len(n)-1-i))
     i+=1
 
+# Converting from base 10 to destination base
 nd=""
 while(n10!=0):
     nd+=aDes[n10%d]
     n10=int(n10/d)
 
+# Printing result
 print("Base "+str(s)+": "+str(n))
 print("Base "+str(d)+": "+nd[::-1])
 
