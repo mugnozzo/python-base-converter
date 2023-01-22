@@ -7,7 +7,8 @@
 - if destination base is not given, calculate result in some standard bases (e.g 2,8,10,16);
 - manage newlines;
 - more and better comments in code;
-- adding more info in result (i.e. source number, source base, destination base).
+- adding more info in result (i.e. source number, source base, destination base);
+- manage zero padding when used to encode texts (option to set in "config.ini").
 
 ## Readme
 - Improve with more details and some examples.

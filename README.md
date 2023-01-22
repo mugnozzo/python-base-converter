@@ -22,5 +22,5 @@ The default bases are numbers from 0 to 9 followed by letters from A to Z (pay a
 If analphabet is set to `ASCII` then it is set to the list of ASCII characters from 32 (space) to 126 (~).
 
 ## Missing features
-- Improving this README with more instructions.
+- Improving this README with more instructions;
 - accepting a file (or stdin) as input (planned as next update).
