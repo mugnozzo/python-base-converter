@@ -55,6 +55,9 @@ if aDes=="ASCII":
 if len(aSou)<s:
     raise Exception("The source alphabet has "+str(len(aSou))+" elements, that is less than "+str(s)+" (the source base).")
 
+if len(aDes)<d:
+    raise Exception("The destination alphabet has "+str(len(aDes))+" elements, that is less than "+str(d)+" (the destination base).")
+
 for ch in aSou:
     if aSou.count(ch)!=1:
         raise Exception("The source alphabet contains duplicate characters.")
