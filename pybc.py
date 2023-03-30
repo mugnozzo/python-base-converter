@@ -2,7 +2,7 @@
 
 # Name:         Python Number Base Converter
 # Author:       Alek Mugnozzo
-# Version:      1.0.0
+# Version:      0.1.0
 # E-mail:       info@mugnozzo.net
 # Website:      mugnozzo.net
 # License:      GNU GPLv3.0
@@ -11,6 +11,7 @@
 import argparse
 from configparser import ConfigParser # to parse config.ini
 import os.path # to check config file and input file
+import json
 
 path=os.path.dirname(os.path.realpath(__file__))
 confPath=path+"/config.ini"
@@ -46,10 +47,14 @@ if aSou=="ASCII":
     aSou=""
     for i in range(32,127):
         aSou+=chr(i)
+else:
+    aSou=json.loads(str(aSou))
 if aDes=="ASCII":
     aDes=""
     for i in range(32,127):
         aDes+=chr(i)
+else:
+    aDes=json.loads(aDes)
 
 # Checking consistency between alphabets/bases/source
 if len(aSou)<s:
@@ -60,7 +65,7 @@ if len(aDes)<d:
 
 for ch in aSou:
     if aSou.count(ch)!=1:
-        raise Exception("The source alphabet contains duplicate characters.")
+        raise Exception("The source alphabet contains duplicate character: "+str(ch))
 
 for ch in aDes:
     if aDes.count(ch)!=1:
